@@ -35,11 +35,8 @@ const GiftGrid = ({ category, handlerRemove }) => {
                 <BlurImage
                   src={url}
                   alt={title}
+                  title={title}
                 />
-                <div className="absolute m-2 p-2 bottom-0 left-0 bg-white rounded-md opacity-0 
-                transition-opacity duration-300 ease-in-out group-hover/gif:opacity-100">
-                  <p className="line-clamp-1">{title}</p>
-                </div>
               </div>
             ))
           }

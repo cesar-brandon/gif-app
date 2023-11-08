@@ -23,6 +23,7 @@ const useFetchGifs = ({ keyword } = { keyword: null }) => {
     setLoading(true);
     getGifs({ keyword }).then((gifs) => {
       setGifs(gifs);
+      addToLocalStorage(keyword, gifs);
       setLoading(false);
     });
   }, [keyword]);
