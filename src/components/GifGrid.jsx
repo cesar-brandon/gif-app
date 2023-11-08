@@ -27,21 +27,23 @@ const GiftGrid = ({ category, handlerRemove }) => {
         onClick={handlerRemove(category)}
       />
 
-      <div title="gifs-container" className="md:grid md:grid-cols-container gap-4 relative z-0">
-        {
-          gifs.map(({ url, title, id }) => (
-            <div key={id} className="group/gif relative rounded-xl h-[10rem] w-full overflow-hidden">
-              <BlurImage
-                src={url}
-                alt={title}
-              />
-              <div className="absolute m-2 p-2 bottom-0 left-0 bg-white rounded-md opacity-0 
+      <div title="gifs-container" className="overflow-x-scroll md:overflow-hidden relative z-0">
+        <div className="flex gap-4 w-[100rem] md:w-full md:grid md:grid-cols-container">
+          {
+            gifs.map(({ url, title, id }) => (
+              <div key={id} className="group/gif relative rounded-xl h-[10rem] w-[10rem] md:w-full overflow-hidden">
+                <BlurImage
+                  src={url}
+                  alt={title}
+                />
+                <div className="absolute m-2 p-2 bottom-0 left-0 bg-white rounded-md opacity-0 
                 transition-opacity duration-300 ease-in-out group-hover/gif:opacity-100">
-                <p className="line-clamp-1">{title}</p>
+                  <p className="line-clamp-1">{title}</p>
+                </div>
               </div>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
       </div>
     </li>
   );
