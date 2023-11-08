@@ -5,4 +5,7 @@ export default {
     '**/?(*.)+(spec|test|tests).[tj]s?(x)',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+  },
 };

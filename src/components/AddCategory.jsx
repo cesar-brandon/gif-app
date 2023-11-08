@@ -8,9 +8,12 @@ import {
   CardTitle,
 } from "./ui/card";
 import { useState } from "react";
+import { addToLocalStorage } from "../lib/utils";
+import useHidden from "../hooks/useHidden";
 
 const AddCategory = ({ categories, setCategories }) => {
   const [inputValue, setInputValue] = useState("");
+  const { isHidden } = useHidden();
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -28,16 +31,18 @@ const AddCategory = ({ categories, setCategories }) => {
     if (existe) return;
 
     setCategories([inputValue, ...categories]);
+    addToLocalStorage(inputValue, []);
     setInputValue("");
   };
 
   return (
-    <Card className="md:flex md:items-center">
+    <Card className={`lg:flex lg:items-center transition-all duration-300 
+          ${isHidden ? "-translate-y-52 md:-translate-y-44 " : "translate-y-0"}`}>
       <CardHeader>
         <CardTitle>Gift App</CardTitle>
         <CardDescription>Buscar gifts</CardDescription>
       </CardHeader>
-      <CardContent className="md:pb-0">
+      <CardContent className="lg:pb-0">
         <form onSubmit={handleSubmit}>
           <div className="flex w-full max-w-sm items-center space-x-2">
             <Input
